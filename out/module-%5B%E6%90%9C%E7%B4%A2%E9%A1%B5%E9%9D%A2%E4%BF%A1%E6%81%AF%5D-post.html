@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: 登录接口-post</title>
+    <title>JSDoc: Module: [搜索页面信息]-post</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Module: 登录接口-post</h1>
+    <h1 class="page-title">Module: [搜索页面信息]-post</h1>
 
     
 
@@ -64,7 +64,7 @@
     
 
     
-    <h4 class="name" id=".POST_USER_LOGIN"><span class="type-signature">(static) </span>POST_USER_LOGIN<span class="signature">(username, password)</span><span class="type-signature"> &rarr; {Result|Data}</span></h4>
+    <h4 class="name" id=".POST_BRAND_LIBRARY_QUERY"><span class="type-signature">(static) </span>POST_BRAND_LIBRARY_QUERY<span class="signature">(tags_id, brand_id<span class="signature-attributes">opt</span>, cate_id<span class="signature-attributes">opt</span>, name<span class="signature-attributes">opt</span>, page<span class="signature-attributes">opt</span>, num<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Result|Data}</span></h4>
     
 
     
@@ -72,7 +72,7 @@
 
 
 <div class="description">
-    小程序登录接口
+    搜索页面信息
 </div>
 
 
@@ -96,7 +96,11 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
 
+        
+        <th>Default</th>
         
 
         <th class="last">Description</th>
@@ -108,30 +112,116 @@
 
         <tr>
             
-                <td class="name"><code>username</code></td>
+                <td class="name"><code>tags_id</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">int</span>
 
 
             
             </td>
 
             
+                <td class="attributes">
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">用户名</td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">XX馆ID</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>password</code></td>
+                <td class="name"><code>brand_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">品牌ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cate_id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">分类ID</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
             
 
             <td class="type">
@@ -144,10 +234,102 @@
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">密码</td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">商品名称</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>page</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">查询页码</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>num</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">int</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    10
+                
+                </td>
+            
+
+            <td class="description last">每页显示记录条数</td>
         </tr>
 
     
@@ -188,7 +370,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line18">line 18</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line42">line 42</a>
     </li></ul></dd>
     
 
@@ -349,7 +531,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line8">line 8</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -515,7 +697,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="index.js.html">index.js</a>, <a href="index.js.html#line2">line 2</a>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -545,13 +727,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-%25E5%2595%2586%25E5%2593%2581%25E6%259F%25A5%25E8%25AF%25A2%25E6%258E%25A5%25E5%258F%25A3-post.html">商品查询接口-post</a></li><li><a href="module-%25E7%2599%25BB%25E5%25BD%2595%25E6%258E%25A5%25E5%258F%25A3-post.html">登录接口-post</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-%255B%25E6%2590%259C%25E7%25B4%25A2%25E9%25A1%25B5%25E9%259D%25A2%25E4%25BF%25A1%25E6%2581%25AF%255D-post.html">[搜索页面信息]-post</a></li><li><a href="module-%25E7%2599%25BB%25E5%25BD%2595%25E6%258E%25A5%25E5%258F%25A3-post.html">登录接口-post</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Nov 04 2019 17:03:11 GMT+0800 (GMT+08:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Nov 04 2019 17:01:08 GMT+0800 (GMT+08:00)
 </footer>
 
 <script> prettyPrint(); </script>
