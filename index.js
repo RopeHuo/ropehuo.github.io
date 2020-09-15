@@ -40,7 +40,7 @@ export function POST_USER_LOGIN() {}
  */
 export function POST_BRAND_LIBRARY_QUERY() { }
 //////////////////////////////////////
-/** @module DEMO-post */
+/** @module DEMO-API-post */
 /**
  * @typedef {Object} Result
  * @property {number} code - 状态码
