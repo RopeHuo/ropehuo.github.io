@@ -39,3 +39,21 @@ export function POST_USER_LOGIN() {}
  * @returns {Result|Data}
  */
 export function POST_BRAND_LIBRARY_QUERY() { }
+//////////////////////////////////////
+/** @module DEMO-post */
+/**
+ * @typedef {Object} Result
+ * @property {number} code - 状态码
+ * @property {string} msg - 信息
+ * @property {string} type - 返回类型
+ */
+/**
+ * @typedef {Object} Data
+ * @property {string} data - Token
+ */
+/**
+ * 商品查询接口
+ * @param {int} DEMO - DEMO
+ * @returns {Result|Data}
+ */
+export function DEMO() { }
