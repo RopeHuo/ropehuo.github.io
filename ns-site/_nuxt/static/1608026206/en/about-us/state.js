@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002F_nuxt\u002Fstatic\u002F1608026206",layout:"index",error:null,state:{layoutConfig:{layoutIndexPageLayoutNode:{header:a,footer:a}},lang:{lang:"en"},"layout-config":{layoutIndexPageLayoutNode:{header:a,footer:a}},i18n:{routeParams:{}}},serverRendered:a,routePath:"\u002Fen\u002Fabout-us",config:{}}}(true));
