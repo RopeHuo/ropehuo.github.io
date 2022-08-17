@@ -10,15 +10,20 @@
         #app {
             text-align: center;
         }
-
+        #retry-password {
+            text-align: center;
+        }
         #app img {
-            width: 19.20vw;
-            height: 10.80vw;
+            width: 70.20vw;
+            height: 60.80vw;
         }
     </style>
 </head>
 
 <body>
+    <div id="retry-password" style="visibility: hidden;">
+        <button onclick="passwordAuth()">重试口令</button>
+    </div>
     <div id="app" style="visibility: hidden;">
         <h1>今日音乐</h1>
         <div id="music">正在加载今日音乐...</div>
@@ -30,12 +35,18 @@
 </body>
 <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
 <script>
-    var word = prompt("请输入口令", "");
-    if (word === '吉利吉利顺我心意' || word == '0102') {
-        document.getElementById('app').setAttribute("style", "visibility: visible !important");
-    } else {
-        document.getElementById('app').setAttribute("style", "visibility: hidden !important");
+    const passwordAuth = () => {
+        let word = prompt("请输入口令", "");
+        if (word === '吉利吉利顺我心意' || word == '0102') {
+            document.getElementById('app').setAttribute("style", "visibility: visible !important");
+            document.getElementById('retry-password').setAttribute("style", "visibility: hidden !important");
+
+        } else {
+            document.getElementById('app').setAttribute("style", "visibility: hidden !important");
+            document.getElementById('retry-password').setAttribute("style", "visibility: visible !important");
+        }
     }
+    passwordAuth();
     const BASE_URL = 'https://music.cyrilstudio.top';
     // 热搜榜
     fetch(`${BASE_URL}/search/hot/detail`).then(searchHotDetailRes => searchHotDetailRes.json()).then(searchHotDetailData => {
