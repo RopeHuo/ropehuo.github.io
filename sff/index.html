@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>吉利</title>
+    <style>
+        #app {
+            text-align: center;
+        }
+
+        #app img {
+            width: 19.20vw;
+            height: 10.80vw;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>留给吉利的页面</h1>
+    <div id="app">
+        <h1>今日音乐</h1>
+        <div id="music">正在加载今日音乐...</div>
+        <h1>今日诗句</h1>
+        <span id="jinrishici-sentence">正在加载今日诗词...</span>
+        <h1>今日图片</h1>
+        <img src="https://api.dujin.org/bing/1366.php" alt="正在加载今日图片..." />
+    </div>
 </body>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script>
+    const BASE_URL = 'https://music.cyrilstudio.top';
+    // 热搜榜
+    fetch(`${BASE_URL}/search/hot/detail`).then(searchHotDetailRes => searchHotDetailRes.json()).then(searchHotDetailData => {
+        const searchHotDetailResult = searchHotDetailData.data;
+        let music11 = [];
+        for (let i = 0; i < 11; i++) {
+            music11.push(searchHotDetailResult[i]);
+        }
+        const newResult = searchHotDetailResult.concat(music11);
+        let m = newResult[new Date().getDate()];
+        // 获取歌曲
+        fetch(`${BASE_URL}/search?keywords=${m.searchWord}&limit=1`).then(searchRes => searchRes.json()).then(searchData => {
+            const searchResult = searchData.result.songs[0];
+            const iframeHtml = `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=${searchResult.id}&auto=0&height=66"></iframe>`
+            document.getElementById('music').innerHTML = iframeHtml;
+        })
+    })
+</script>
+
 </html>
