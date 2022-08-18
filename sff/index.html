@@ -49,11 +49,13 @@
     }
     passwordAuth();
     const BASE_URL = 'https://music.cyrilstudio.top';
+    let currentDate = new Date();
+    const CURRENT_DATE = `${currentDate.getFullYear()}_${currentDate.getMonth() + 1}_${currentDate.getDate()}`;
     // 获取古诗
     fetch('https://v1.jinrishici.com/all.json').then(shiRes => shiRes.json()).then(shiData => {
-        let shiResContent = localStorage.getItem('shiResContent') || shiData.content;
+        let shiResContent = localStorage.getItem(`${CURRENT_DATE}_shiResContent`) || shiData.content;
         document.getElementById('shi-sentence').innerHTML = shiResContent;
-        localStorage.setItem('shiResContent', shiResContent);
+        localStorage.setItem(`${CURRENT_DATE}_shiResContent`, shiResContent);
     })
     // 获取热搜榜
     fetch(`${BASE_URL}/search/hot/detail`).then(searchHotDetailRes => searchHotDetailRes.json()).then(searchHotDetailData => {
@@ -64,13 +66,13 @@
         }
         const newResult = searchHotDetailResult.concat(music11);
         let m = newResult[new Date().getDate()];
-        let searchWord = localStorage.getItem('searchWord') || m.searchWord;
+        let searchWord = localStorage.getItem(`${CURRENT_DATE}_searchWord`) || m.searchWord;
         // 获取歌曲
         fetch(`${BASE_URL}/search?keywords=${searchWord}&limit=1`).then(searchRes => searchRes.json()).then(searchData => {
             const searchResult = searchData.result.songs[0];
             const iframeHtml = `<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=${searchResult.id}&auto=0&height=66"></iframe>`
             document.getElementById('music').innerHTML = iframeHtml;
-            localStorage.setItem('searchWord', searchWord);
+            localStorage.setItem(`${CURRENT_DATE}_searchWord`, searchWord);
         })
     })
 </script>
