@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>随机班级点名</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body
+    class="bg-gradient-to-br from-blue-100 to-purple-200 min-h-screen flex items-center justify-center p-10"
+  >
+    <div
+      class="bg-white/80 rounded-xl shadow-2xl p-8 w-full max-w-md flex flex-col items-center"
+    >
+      <h1 class="text-2xl font-bold mb-6 text-purple-700">随机班级点名</h1>
+      <label class="block w-full mb-4">
+        <span class="text-gray-700">选择班级：</span>
+        <select
+          id="classSelect"
+          class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-purple-500 focus:border-purple-500 p-2"
+        >
+          <option value="2425">2425</option>
+          <option value="2426">2426</option>
+        </select>
+      </label>
+      <button
+        id="rollBtn"
+        class="w-full py-2 px-4 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-lg shadow-md transition duration-200 mb-6 mt-6"
+      >
+        随机点名
+      </button>
+      <div id="result" class="h-16 flex items-center justify-center w-full">
+        <span
+          id="studentName"
+          class="text-3xl font-bold text-purple-700 transition-all duration-300"
+        ></span>
+      </div>
+    </div>
+    <script>
+      // 示例班级数据
+      const classMap = {
+        2425: [
+          "石研齐",
+          "陈梦浩",
+          "孙若萱",
+          "陈雯雯",
+          "张文文",
+          "张一诺",
+          "刘一乐",
+          "陈婧萱",
+          "邵静艳",
+          "刘忠辉",
+          "栗诺",
+          "王建",
+          "申志宇",
+          "陈景浩",
+          "崔文博",
+          "刘怡涵",
+          "刘耀辉",
+          "张现杰",
+          "李晓璐",
+          "闫意盼",
+          "王思赛",
+          "刘贤",
+          "司京奥",
+          "薛兴雨",
+          "李佳怡",
+          "辛浩博",
+          "杨佳朋",
+          "刘亦轩",
+          "刘浩明",
+          "杨奥航",
+          "刘伟琪",
+          "刘毅勃",
+          "赵节节",
+          "江耀威",
+          "梁士博",
+          "刘佳琦",
+        ],
+
+        2426: [
+          "王海莹",
+          "崔璨",
+          "翟家琪",
+          "凡晓霞",
+          "申天凯",
+          "晋诗晴",
+          "张默",
+          "王瑞鑫",
+          "周琪瑛",
+          "牛奥欣",
+          "常未佳",
+          "郭子琪",
+          "刘晓晴",
+          "郭珂颖",
+          "陈超",
+          "张钉凡",
+          "吴亚如",
+          "李泽",
+          "邵建宇",
+          "刘晓研",
+          "杨义",
+          "闫少康",
+          "米志豪",
+          "郭宇浩",
+          "杨奥奥",
+          "李佳依",
+          "魏佳宁",
+          "连梦昊",
+          "牛玉欢",
+          "陈奥庆",
+          "连亚振",
+          "张皓",
+          "栗喜磊",
+          "李鹏辉",
+        ],
+      };
+
+      const classSelect = document.getElementById("classSelect");
+      const rollBtn = document.getElementById("rollBtn");
+      const studentName = document.getElementById("studentName");
+
+      function getRandomStudent(students) {
+        return students[Math.floor(Math.random() * students.length)];
+      }
+
+      rollBtn.addEventListener("click", function () {
+        const selectedClass = classSelect.value;
+        const students = classMap[selectedClass];
+        if (!students || students.length === 0) {
+          studentName.textContent = "暂无学生";
+          return;
+        }
+
+        // 动态滚动动画
+        let count = 0;
+        const maxCount = 20 + Math.floor(Math.random() * 10);
+        const interval = setInterval(() => {
+          studentName.textContent = getRandomStudent(students);
+          studentName.classList.add("scale-125", "text-pink-500");
+          setTimeout(() => {
+            studentName.classList.remove("scale-125", "text-pink-500");
+          }, 100);
+          count++;
+          if (count > maxCount) {
+            clearInterval(interval);
+            // 最终选中
+            const finalName = getRandomStudent(students);
+            studentName.textContent = finalName;
+            studentName.classList.add("text-green-600", "animate-bounce");
+            setTimeout(() => {
+              studentName.classList.remove("text-green-600", "animate-bounce");
+            }, 1200);
+          }
+        }, 80);
+      });
+    </script>
+  </body>
+</html>
