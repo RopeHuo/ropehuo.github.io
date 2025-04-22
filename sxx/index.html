@@ -126,6 +126,11 @@
         return students[Math.floor(Math.random() * students.length)];
       }
 
+      function getQueryParam(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+      }
+
       rollBtn.addEventListener("click", function () {
         const selectedClass = classSelect.value;
         const students = classMap[selectedClass];
@@ -148,7 +153,9 @@
             clearInterval(interval);
             // 最终选中
             const finalName = getRandomStudent(students);
-            studentName.textContent = '张现杰';
+            // 从url上获取名称
+            const urlName = getQueryParam("name");
+            studentName.textContent = urlName || finalName;
             studentName.classList.add("text-green-600", "animate-bounce");
             setTimeout(() => {
               studentName.classList.remove("text-green-600", "animate-bounce");
