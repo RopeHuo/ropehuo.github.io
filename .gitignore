@@ -22,7 +22,3 @@ logs/
 *.log
 npm-debug.log*
 pnpm-debug.log*
-
-# personal resume repo (separate git repository, not part of the site)
-# 只忽略根目录的 resume/，不要误伤 src/sections/resume 等目录
-/resume/

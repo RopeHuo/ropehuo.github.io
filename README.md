@@ -133,7 +133,7 @@ tags: [前端, 工程化]
 
 ## 几个说明
 
-- 根目录的 `resume/` 是另一个独立的 git 仓库（个人简历源文件），已在 `.gitignore` 中排除；注意 `.gitignore` 用的是 `/resume/`，不会误伤 `src/sections/resume/`。
+- 工作区根目录 `../resume/` 是另一个独立的 git 仓库（个人简历源文件），不在本站点仓库内；不要把其中的信息复制到站点。
 - 站点部署在根域名，所以 `vite.config.ts` 的 `base` 保持默认 `'/'`。如果以后改放到项目站（`/<repo>/`），需要同时设置 `base` 和 `BrowserRouter` 的 `basename`。
 - 站内路由是 SPA，`pnpm build` 会把 `index.html` 复制成 `404.html`；直接用 `file://` 打开 `dist/index.html` 不能正常跳转，请用 `pnpm preview`。
 - 因为走的是 404.html 回退，深链接由浏览器端渲染，GitHub Pages 会返回 404 状态码（页面内容正常）。如果以后更在意 SEO 和分享预览，可以再加一层构建期预渲染。

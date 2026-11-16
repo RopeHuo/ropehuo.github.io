@@ -28,7 +28,7 @@ RopeHuo 个人网站（ropehuo.github.io）：Vite 8 + React 19 + TS + Tailwind 
 - 对外身份只使用 **RopeHuo**，不得出现真实姓名。
 - 不公开任职企业名称、客户/合作方名称、内部项目/系统名、内部字段名、精确业务指标。
 - 教育只保留专业 + 学历（不写学校、证书）；工作时间只到年。
-- 根目录 `resume/` 是私有仓库，不发布；不要把其中的信息复制到站点。
+- 工作区根目录 `../resume/` 是私有仓库，不发布；不要把其中的信息复制到站点。
 - 文章 slug、项目 slug 也不要包含内部项目名。
 
 ## 样式与类型
@@ -41,5 +41,5 @@ RopeHuo 个人网站（ropehuo.github.io）：Vite 8 + React 19 + TS + Tailwind 
 
 - 用户站部署在根域名，vite `base` 保持 `'/'`。若改项目站，需同时改 `base` 和 `BrowserRouter` 的 `basename`（src/main.tsx）。
 - SPA 深链接靠 404.html 回退，GitHub Pages 会返回 404 状态码但页面内容正常，这是预期行为。
-- 根目录 `resume/` 是另一个独立 git 仓库（个人简历源文件），被 `/resume/` 忽略；不要改动或提交它，也不要与 `src/sections/resume/` 混淆。
+- 工作区根目录 `../resume/` 是另一个独立 git 仓库（个人简历源文件），本站点仓库不包含它；不要改动或提交它，也不要与 `src/sections/resume/` 混淆。
 - 改文案/项目/简历只动 `content/*.ts`，不碰 `src/`；换视觉只动 `src/styles|ui|sections|layout`。
