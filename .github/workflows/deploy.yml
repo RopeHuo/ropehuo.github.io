@@ -51,8 +51,6 @@ jobs:
         run: |
           mkdir -p dist/qagent-proof
           cp qagent-proof-src/index.html qagent-proof-src/styles.css qagent-proof-src/.nojekyll dist/qagent-proof/
-          echo "--- dist/qagent-proof contents ---"
-          ls -la dist/qagent-proof/
 
       - uses: actions/configure-pages@v5
 
