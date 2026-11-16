@@ -38,7 +38,7 @@ jobs:
         run: pnpm build
 
       # 聚合 qagent-proof 的静态页面到 dist/qagent-proof/
-      # qagent-proof 已改为 private，需用有读取权限的 PAT
+      # qagent-proof 为 private 仓库，用 QAGENT_PROOF_TOKEN 读取
       - name: Checkout qagent-proof
         uses: actions/checkout@v4
         with:
