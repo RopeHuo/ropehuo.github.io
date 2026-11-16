@@ -1,0 +1,66 @@
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-panel: var(--c-panel);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-dim: var(--c-dim);
+  --color-line: var(--c-line);
+  --color-line-strong: var(--c-line-strong);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-night: var(--c-night);
+  --color-night-fg: var(--c-night-fg);
+  --color-night-muted: var(--c-night-muted);
+  --color-night-line: var(--c-night-line);
+  --color-success: var(--c-success);
+
+  --font-sans: var(--font-stack-sans);
+  --font-mono: var(--font-stack-mono);
+}
+
+:root {
+  color-scheme: light;
+
+  --c-bg: #fbfbfb;
+  --c-panel: #ffffff;
+  --c-ink: #161616;
+  --c-muted: #5c5c5c;
+  --c-dim: #888888;
+  --c-line: #e7e7e7;
+  --c-line-strong: #d0d0d0;
+  --c-accent: #2f6bff;
+  --c-accent-soft: rgba(47, 107, 255, 0.08);
+  --c-night: #0d0d0d;
+  --c-night-fg: #f2f2f2;
+  --c-night-muted: #9a9a9a;
+  --c-night-line: #242424;
+  --c-success: #3fb950;
+
+  --font-stack-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --font-stack-mono:
+    ui-monospace, 'SFMono-Regular', 'SF Mono', 'Cascadia Code', 'Roboto Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --c-bg: #0e0e0e;
+  --c-panel: #151515;
+  --c-ink: #ededed;
+  --c-muted: #a3a3a3;
+  --c-dim: #7c7c7c;
+  --c-line: #262626;
+  --c-line-strong: #3a3a3a;
+  --c-accent: #6b8fff;
+  --c-accent-soft: rgba(107, 143, 255, 0.13);
+  --c-night: #171717;
+  --c-night-fg: #f2f2f2;
+  --c-night-muted: #9a9a9a;
+  --c-night-line: #2b2b2b;
+  --c-success: #3fb950;
+}

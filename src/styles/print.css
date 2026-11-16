@@ -1,0 +1,57 @@
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .site-sidebar,
+  .site-mobile-header,
+  .site-footer,
+  .skip-link,
+  .no-print,
+  .post-toc {
+    display: none !important;
+  }
+
+  .site-body {
+    padding-left: 0 !important;
+  }
+
+  .site-shell {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  .site-main {
+    max-width: none !important;
+    padding: 0 !important;
+  }
+
+  a {
+    color: #000000 !important;
+    text-decoration: underline;
+  }
+
+  .print-avoid-break {
+    break-inside: avoid;
+  }
+
+  .resume-header {
+    padding-top: 0 !important;
+    padding-bottom: 10px !important;
+  }
+
+  .resume-title {
+    font-size: 44px !important;
+    line-height: 1 !important;
+  }
+
+  .resume-section {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ropehuo.github.io/sitemap.xml

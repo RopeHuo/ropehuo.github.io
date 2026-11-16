@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RopeHuo — 前端工程师 · AI Agent</title>
+    <meta
+      name="description"
+      content="RopeHuo 的个人网站：8 年 Web 与多端开发，关注 AI Agent、MCP、AIGC 与工程化。"
+    />
+    <meta name="author" content="RopeHuo" />
+    <meta name="theme-color" content="#fbfbfb" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e0e0e" media="(prefers-color-scheme: dark)" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="RopeHuo" />
+    <meta property="og:title" content="RopeHuo — 前端工程师 · AI Agent" />
+    <meta
+      property="og:description"
+      content="8 年 Web 与多端开发，关注 AI Agent、MCP、AIGC 与工程化。"
+    />
+    <meta property="og:url" content="https://ropehuo.github.io/" />
+    <meta property="og:locale" content="zh_CN" />
+    <meta property="og:image" content="https://ropehuo.github.io/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="RopeHuo — 前端工程师 · AI Agent" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ropehuo.github.io/og.png" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://ropehuo.github.io/" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "RopeHuo",
+        "url": "https://ropehuo.github.io/",
+        "jobTitle": "前端工程师",
+        "knowsAbout": ["前端开发", "AI Agent", "MCP", "AIGC", "微前端"],
+        "sameAs": ["https://github.com/RopeHuo", "https://www.cnblogs.com/rope"]
+      }
+    </script>
+
+    <script>
+      // 在首屏渲染前定好主题，避免暗色模式闪白
+      ;(function () {
+        try {
+          var stored = localStorage.getItem('ropehuo-theme')
+          var dark = stored
+            ? stored === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (dark) document.documentElement.classList.add('dark')
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
