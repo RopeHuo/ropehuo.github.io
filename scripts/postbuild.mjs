@@ -12,7 +12,7 @@ const postRoutes = postFiles
   .filter((file) => file.endsWith('.md'))
   .map((file) => `/blog/${file.replace(/\.md$/, '')}`)
 
-const routes = ['/', '/projects', '/blog', '/resume', ...postRoutes]
+const routes = ['/', '/projects', '/blog', '/resume', '/qagent-proof', ...postRoutes]
 const lastmod = new Date().toISOString().slice(0, 10)
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

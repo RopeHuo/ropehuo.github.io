@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  repository_dispatch:
+    types: [qagent-proof-update]
 
 permissions:
   contents: read
@@ -34,6 +36,21 @@ jobs:
 
       - name: Build
         run: pnpm build
+
+      # 聚合 qagent-proof 的静态页面到 dist/qagent-proof/
+      # qagent-proof 已改为 private，需用有读取权限的 PAT
+      - name: Checkout qagent-proof
+        uses: actions/checkout@v4
+        with:
+          repository: RopeHuo/qagent-proof
+          ref: main
+          token: ${{ secrets.QAGENT_PROOF_TOKEN }}
+          path: qagent-proof-src
+
+      - name: Inject qagent-proof page
+        run: |
+          mkdir -p dist/qagent-proof
+          cp qagent-proof-src/index.html qagent-proof-src/styles.css qagent-proof-src/.nojekyll dist/qagent-proof/
 
       - uses: actions/configure-pages@v5
 
