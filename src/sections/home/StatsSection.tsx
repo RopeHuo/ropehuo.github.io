@@ -3,7 +3,7 @@ import { Section } from '../../ui/Section'
 
 export function StatsSection({ content }: { content: HomeContent['stats'] }) {
   return (
-    <Section index="04" label={content.label} note="practice / 04 tracks">
+    <Section index="04" label={content.label} note="practice / 03 tracks">
       <div className="grid grid-cols-2 border-t border-line sm:grid-cols-4">
         {content.items.map((stat, index) => (
           <div

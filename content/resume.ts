@@ -3,12 +3,12 @@ import type { ResumeContent } from './types'
 export const resumeContent: ResumeContent = {
   meta: {
     title: '简历',
-    description: 'RopeHuo 的简历：前端工程师，8 年 Web 与多端开发，关注 AI Agent 与 AIGC 落地。',
+    description: 'RopeHuo 的简历：软件工程师，8 年经验，工作围绕前端、AI 与全栈（Node）展开。',
   },
   header: {
     index: '[3]',
     label: 'resume',
-    role: '前端工程师 · AI Agent',
+    role: '软件工程师',
     experience: '8 年经验',
     printLabel: '打印 / PDF',
     printNote: '点右上角「打印 / PDF」，用浏览器打印可以得到一份干净的简历。',
@@ -19,7 +19,7 @@ export const resumeContent: ResumeContent = {
     { label: '博客园', value: 'cnblogs.com/rope', href: 'https://www.cnblogs.com/rope', external: true },
   ],
   intro:
-    '2016 年开始接触前端，2018 年正式从事前端开发。做过大厂业务研发，也带过前端小组；熟悉 React / Vue / 小程序与 Node.js，近年专注 AI Agent 与 AIGC 能力落地。习惯把一次性的人工流程，沉淀成可复用的工具、用例和资产。',
+    '2016 年开始接触前端，2018 年正式从事开发。做过大厂业务研发，也带过前端小组；熟悉 React / Vue / 小程序与 Node.js。工作围绕前端、AI、全栈展开，后端主要用 Node 接服务端业务、接口、数据与部署。习惯把一次性的人工流程，沉淀成可复用的工具、用例和资产。',
   sections: {
     skills: '技能清单',
     experience: '工作经历',
@@ -37,19 +37,19 @@ export const resumeContent: ResumeContent = {
       items: ['TypeScript', 'JavaScript', 'React', 'Vue', 'NuxtJS'],
     },
     {
+      label: '全栈',
+      items: ['Node.js', 'EggJS', '接口设计', '数据链路', '部署 / 灰度'],
+    },
+    {
       label: '多端',
       items: ['微信小程序', 'uni-app', 'Taro', 'Electron', '企业微信 JS-SDK'],
     },
     {
-      label: '工程化',
-      items: ['Vite', 'Webpack', 'micro-app', 'qiankun', 'Node.js', 'EggJS'],
+      label: '工程化与测试',
+      items: ['Vite', 'Webpack', 'micro-app', 'qiankun', 'Playwright', 'Jest', 'ECharts'],
     },
     {
-      label: '测试与可视化',
-      items: ['Playwright', 'Jest', 'ECharts'],
-    },
-    {
-      label: '协作与部署',
+      label: '协作',
       items: ['Git', 'GitHub Actions', '私有 npm', '技术文档'],
     },
   ],
@@ -62,8 +62,8 @@ export const resumeContent: ResumeContent = {
         '负责多条零售业务线的 B/C 端研发，覆盖 Web、小程序与 App 多端。',
         '参与 AI 开发助手、AI 生图与 Agent 物料能力建设，把 AI 接进建品、客服与对话等既有业务流程。',
         '主导通用测试智能体的 Agent Skill + MCP Server 搭建，支持页面盲探与按源码生成 Playwright 用例；参与企业微信 AIGC 专项。',
-        '推动前后端分离、系统融合、CDN 化、骨架屏与灰度发布体系，负责反爬治理、监控与埋点 SDK 接入。',
-        '负责网关管理平台、自研 VSCode 插件、UI 框架与多页面脚手架，沉淀可复用的工程方案。',
+        '推动前后端分离、系统融合、CDN 化、骨架屏与灰度发布体系；用 Node / EggJS 承接服务端业务、接口与数据链路。',
+        '负责网关管理平台、反爬治理、监控与埋点 SDK 接入；也做自研 VSCode 插件、UI 框架与多页面脚手架，沉淀可复用的工程方案。',
       ],
     },
     {

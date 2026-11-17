@@ -17,7 +17,7 @@ export function CareerKnot() {
         viewBox="0 0 420 420"
         className="relative w-full"
         role="img"
-        aria-label="RopeHuo 的实践时间线：2018 Web，2020 多端，2022 微前端，2024 AI Agent，现在 Agent 与 MCP"
+        aria-label="RopeHuo 的实践路径：2018 Web，2020 多端，2022 微前端，2024 AI Agent；现在是软件工程师，工作覆盖前端、AI 与全栈"
       >
         <g
           stroke="currentColor"
@@ -145,17 +145,27 @@ export function CareerKnot() {
             letterSpacing="0.2"
             fill="var(--c-ink)"
           >
-            AGENT / MCP
+            SOFTWARE ENGINEER
+          </text>
+          <text
+            x="184"
+            y="76"
+            fontFamily={MONO}
+            fontSize="7"
+            letterSpacing="1"
+            fill="var(--c-dim)"
+          >
+            FRONTEND · AI · FULL-STACK
           </text>
         </g>
 
         <text x="184" y="24" fontFamily={MONO} fontSize="8" letterSpacing="1.4" fill="var(--c-dim)">
-          FIG. 01 — THE LONG LINE
+          FIG. 01 — ONE LINE, THREE STRANDS
         </text>
       </svg>
 
       <figcaption className="relative mt-2 flex items-center justify-between gap-4 border-t border-line pt-2 font-mono text-[8px] uppercase tracking-[0.14em] text-dim">
-        <span>one line / eight years</span>
+        <span>one line / three strands</span>
         <span>2018 — now</span>
       </figcaption>
     </figure>

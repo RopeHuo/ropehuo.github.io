@@ -2,16 +2,16 @@ import type { SiteContent } from './types'
 
 export const siteContent: SiteContent = {
   name: 'RopeHuo',
-  role: '前端工程师 · AI Agent',
-  tagline: '写前端，也造会自己干活的 Agent。',
-  description: 'RopeHuo 的个人网站：8 年 Web 与多端开发，关注 AI Agent、MCP、AIGC 与工程化。',
+  role: '软件工程师',
+  tagline: '软件工程师，做前端、AI 和全栈。',
+  description: 'RopeHuo 的个人网站：软件工程师，8 年经验，工作围绕前端、AI 与全栈（Node）展开。',
   url: 'https://ropehuo.github.io',
   email: 'RopeHuo@163.com',
   github: 'https://github.com/RopeHuo',
   cnblogs: 'https://www.cnblogs.com/rope',
   startYear: 2018,
   wordmark: 'ropehuo',
-  railTagline: 'frontend / agent',
+  railTagline: 'swe / frontend · ai · full-stack',
   nav: [
     { href: '/', label: '首页', index: '0', end: true },
     { href: '/projects', label: '项目', index: '1' },
@@ -31,8 +31,8 @@ export const siteContent: SiteContent = {
     wordmarkLabel: 'ropehuo / 2026',
   },
   meta: {
-    defaultTitle: 'RopeHuo — 前端工程师 · AI Agent',
+    defaultTitle: 'RopeHuo — 软件工程师 · 前端 / AI / 全栈',
     defaultDescription:
-      'RopeHuo 的个人网站：8 年 Web 与多端开发，关注 AI Agent、MCP、AIGC 与工程化。',
+      'RopeHuo 的个人网站：软件工程师，8 年经验，工作围绕前端、AI 与全栈（Node）展开。',
   },
 }

@@ -3,14 +3,14 @@ import type { ProjectsContent } from './types'
 export const projectsContent: ProjectsContent = {
   meta: {
     title: '项目',
-    description: 'RopeHuo 的项目与作品：AI Agent、AIGC、微前端、多端与工程化实践。',
+    description: 'RopeHuo 的项目与作品：前端、AI Agent、全栈与工程化实践。',
   },
   header: {
     index: '[1]',
     label: 'selected work',
     title: '项目 / Projects',
     intro:
-      '从前端业务到工程底座，再到这两年的 AI Agent。只保留可以公开描述的架构思路；客户、内部系统与业务细节已做泛化。',
+      '从前端业务到全栈链路，再到这两年的 AI Agent。只保留可以公开描述的架构思路；客户、内部系统与业务细节已做泛化。',
   },
   filters: [
     { key: 'all', label: '全部' },

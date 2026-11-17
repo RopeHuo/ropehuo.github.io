@@ -38,8 +38,8 @@ export function HeroSection({ content }: { content: HomeContent['hero'] }) {
 
       <div className="relative mt-12 grid grid-cols-2 gap-3 border-t border-line pt-4 font-mono text-[9px] uppercase tracking-[0.14em] text-dim sm:grid-cols-4">
         <span>EST. 2018</span>
-        <span>WEB / MULTI-END</span>
-        <span>AI AGENT / MCP</span>
+        <span>FRONTEND / MULTI-END</span>
+        <span>AI / FULL-STACK</span>
         <span className="sm:text-right">SCROLL ↓</span>
       </div>
     </section>
