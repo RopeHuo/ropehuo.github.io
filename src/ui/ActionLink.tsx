@@ -13,14 +13,22 @@ const DARK_STYLES = {
   link: 'btn-night-ghost',
 } as const
 
+const ACCENT_STYLES = {
+  primary: 'btn-accent-ink',
+  secondary: 'btn-accent-outline',
+  link: 'btn-accent-ghost',
+} as const
+
 interface ActionLinkProps {
   action: ActionItem
-  tone?: 'light' | 'dark'
+  tone?: 'light' | 'dark' | 'accent'
 }
 
 export function ActionLink({ action, tone = 'light' }: ActionLinkProps) {
   const emphasis = action.emphasis ?? 'primary'
-  const className = (tone === 'dark' ? DARK_STYLES : LIGHT_STYLES)[emphasis]
+  const styles =
+    tone === 'dark' ? DARK_STYLES : tone === 'accent' ? ACCENT_STYLES : LIGHT_STYLES
+  const className = styles[emphasis]
   const content = (
     <>
       {action.label}

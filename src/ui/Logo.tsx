@@ -1,16 +1,20 @@
-export function Logo({ className = 'size-6' }: { className?: string }) {
+export function Logo({ className = 'size-7' }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <rect width="24" height="24" fill="currentColor" />
+    <svg viewBox="0 0 32 32" className={className} aria-hidden="true" fill="none">
+      <path d="M3.5 3.5h25v25h-25z" stroke="currentColor" strokeWidth="1.2" />
       <path
-        d="M7.5 17.5v-11h4.4a3.4 3.4 0 0 1 0 6.8H10"
-        fill="none"
-        stroke="var(--c-bg)"
-        strokeWidth="2"
+        d="M10 25V8h7.5a4.5 4.5 0 0 1 0 9H11"
+        stroke="currentColor"
+        strokeWidth="2.2"
         strokeLinecap="square"
       />
-      <path d="m12.6 13.3 4.1 4.2" stroke="var(--c-bg)" strokeWidth="2" strokeLinecap="square" />
-      <rect x="17.5" y="4" width="4" height="4" fill="var(--c-accent)" />
+      <path
+        d="M16.5 17 24 25"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="square"
+      />
+      <rect x="25" y="3" width="5" height="5" fill="var(--c-accent)" />
     </svg>
   )
 }

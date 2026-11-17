@@ -1,240 +1,315 @@
+import type { ReactNode } from 'react'
 import type { ProjectCategory, ProjectItem } from '../../content/types'
 
-type Visual = 'terminal' | 'chat' | 'grid' | 'portal' | 'phone' | 'chart'
+type Visual = 'loop' | 'braid' | 'grid' | 'branch' | 'portal' | 'spool'
 
 const VISUALS: Record<string, Visual> = {
-  'qa-agent': 'terminal',
-  'ai-dev-assistant': 'chat',
+  'qa-agent': 'loop',
+  'ai-dev-assistant': 'braid',
   'wecom-aigc': 'grid',
-  'mini-program-saas': 'phone',
+  'mini-program-saas': 'branch',
   'merchant-portal-micro-frontend': 'portal',
-  'multi-end-points-mall': 'chart',
+  'multi-end-points-mall': 'spool',
 }
 
 const FALLBACK_VISUAL: Record<ProjectCategory, Visual> = {
-  ai: 'terminal',
+  ai: 'loop',
   arch: 'portal',
-  multi: 'phone',
+  multi: 'branch',
 }
 
 const LABELS: Record<Visual, string> = {
-  terminal: 'agent / testing',
-  chat: 'ai / assistant',
-  grid: 'aigc / studio',
-  phone: 'mini program / saas',
+  loop: 'agent / quality loop',
+  braid: 'ai / conversation',
+  grid: 'aigc / asset grid',
+  branch: 'mini program / saas',
   portal: 'micro frontend / portal',
-  chart: 'data / dashboard',
+  spool: 'multi-end / spool',
 }
 
-function TerminalMotif() {
+function SvgLabel({
+  x,
+  y,
+  children,
+  anchor = 'middle',
+  accent = false,
+}: {
+  x: number
+  y: number
+  children: string
+  anchor?: 'start' | 'middle' | 'end'
+  accent?: boolean
+}) {
   return (
-    <div className="absolute left-1/2 top-1/2 w-[86%] -translate-x-1/2 -translate-y-1/2 border border-night-line bg-black/70">
-      <div className="flex h-[7cqw] items-center gap-[1.4cqw] border-b border-night-line px-[3cqw]">
-        <span className="size-[1.5cqw] bg-[#ff5f57]" />
-        <span className="size-[1.5cqw] bg-[#febc2e]" />
-        <span className="size-[1.5cqw] bg-[#28c840]" />
-        <span className="ml-auto font-mono text-[2cqw] text-night-muted">qa-agent — terminal</span>
-      </div>
-      <div className="space-y-[1.4cqw] p-[3.2cqw] font-mono text-[2.3cqw] leading-[1.65]">
-        <p>
-          <span className="text-[#6b8fff]">$</span> qa-agent run --target checkout
-        </p>
-        <p className="text-night-muted">› mapping source … files</p>
-        <p>
-          <span className="text-[#3fb950]">✓</span> specs generated
-        </p>
-        <div className="h-[0.6cqw] w-full bg-white/10">
-          <div className="h-full w-[68%] bg-[#6b8fff]" />
-        </div>
-        <p className="text-night-muted">running playwright …</p>
-        <p>
-          <span className="text-[#3fb950]">✓</span> passed{' '}
-          <span className="text-night-muted">/ 0 failed</span>
-        </p>
-        <p className="text-[#6b8fff]">▌</p>
-      </div>
-    </div>
-  )
-}
-
-function ChatMotif() {
-  return (
-    <div className="absolute inset-x-[7%] top-1/2 -translate-y-1/2 space-y-[2.4cqw]">
-      <div className="ml-auto w-[62%] border border-white/10 bg-white/[0.05] p-[2.6cqw] font-mono text-[2.2cqw] leading-[1.5] text-white/80">
-        帮我生成一张商品主图
-      </div>
-      <div className="w-[88%] border border-[#6b8fff]/35 bg-[#0b1220] p-[2.6cqw]">
-        <div className="flex items-center justify-between font-mono text-[1.9cqw] text-night-muted">
-          <span>IMAGE · 1024×1024</span>
-          <span className="text-[#6b8fff]">DONE</span>
-        </div>
-        <div className="relative mt-[2cqw] aspect-[16/7] w-full overflow-hidden border border-night-line bg-[radial-gradient(circle_at_30%_25%,#294066,transparent_55%),linear-gradient(135deg,#111b2c,#070b12)]">
-          <span className="absolute left-[4%] top-[6%] font-mono text-[1.7cqw] text-white/30">
-            AIGC / PREVIEW
-          </span>
-          <div className="absolute bottom-[8%] left-[4%] h-[1.2cqw] w-[30%] bg-white/10" />
-        </div>
-        <div className="mt-[2cqw] flex gap-[1.2cqw]">
-          <span className="h-[5cqw] w-[22%] border border-night-line bg-white/[0.04]" />
-          <span className="h-[5cqw] w-[22%] border border-night-line bg-white/[0.04]" />
-          <span className="flex h-[5cqw] flex-1 items-center justify-center bg-[#6b8fff] font-mono text-[1.8cqw] text-black">
-            导出
-          </span>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const GRID_TILES = [
-  { label: '海报', className: 'from-[#1a2233] to-[#0b0e14]' },
-  { label: '视频', className: 'from-[#202a20] to-[#0c0f0c]' },
-  { label: '图文', className: 'from-[#2a2220] to-[#0f0c0b]' },
-  { label: '菜谱', className: 'from-[#1d2630] to-[#0a0d11]' },
-]
-
-function GridMotif() {
-  return (
-    <>
-      <div className="absolute inset-x-[8%] inset-y-[14%] grid grid-cols-2 grid-rows-2 gap-[2.2cqw]">
-        {GRID_TILES.map((tile) => (
-          <div
-            key={tile.label}
-            className={`relative border border-night-line bg-gradient-to-br ${tile.className} p-[2.4cqw]`}
-          >
-            <span className="font-mono text-[2cqw] text-white/40">{tile.label}</span>
-            <div className="absolute inset-x-[10%] bottom-[12%] space-y-[1cqw]">
-              <div className="h-[1cqw] w-[70%] bg-white/10" />
-              <div className="h-[1cqw] w-[45%] bg-white/10" />
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="absolute bottom-[5%] left-[8%] flex items-center gap-[1.5cqw] font-mono text-[1.9cqw] text-night-muted">
-        <span className="size-[1.2cqw] bg-[#3fb950]" /> assets ready
-      </div>
-    </>
-  )
-}
-
-function PortalNode({ label, center = false }: { label: string; center?: boolean }) {
-  return (
-    <div
-      className={`flex h-[7cqw] w-full items-center justify-center border font-mono text-[1.8cqw] ${
-        center
-          ? 'border-[#6b8fff] bg-[#0d1730] text-[#a9c0ff]'
-          : 'border-night-line bg-white/[0.03] text-night-muted'
-      }`}
+    <text
+      x={x}
+      y={y}
+      textAnchor={anchor}
+      fontFamily="var(--font-stack-mono)"
+      fontSize="9"
+      letterSpacing="1.2"
+      fill={accent ? 'var(--c-accent)' : 'var(--c-dim)'}
     >
-      {label}
-    </div>
+      {children}
+    </text>
   )
 }
 
-function PortalMotif() {
+function Frame({
+  children,
+  label,
+  index,
+  className,
+  compact,
+}: {
+  children: ReactNode
+  label: string
+  index: number
+  className: string
+  compact: boolean
+}) {
   return (
-    <div className="absolute inset-x-[8%] top-1/2 -translate-y-1/2">
-      <div className="grid grid-cols-[1fr_1.2fr_1fr] grid-rows-3 items-center gap-[2cqw]">
-        <div />
-        <PortalNode label="APP-A" />
-        <div />
-        <PortalNode label="APP-B" />
-        <PortalNode label="PORTAL" center />
-        <PortalNode label="APP-C" />
-        <div />
-        <PortalNode label="APP-D" />
-        <div />
-      </div>
-      <div className="mt-[2.5cqw] flex justify-between font-mono text-[1.7cqw] text-night-muted">
-        <span>micro-app</span>
-        <span>iframe</span>
-        <span>independent deploy</span>
-      </div>
+    <div className={`relative overflow-hidden bg-panel ${className}`} aria-hidden="true">
+      <div className="grid-paper pointer-events-none absolute inset-0 opacity-50" />
+      <svg viewBox="0 0 400 250" className="relative h-full w-full" fill="none">
+        {children}
+      </svg>
+      <span className="absolute left-3 top-2.5 font-mono text-[7px] uppercase tracking-[0.16em] text-dim">
+        {label}
+      </span>
+      <span className="absolute bottom-2 right-3 font-mono text-[9px] text-dim">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+      {!compact && (
+        <span className="absolute right-3 top-2.5 font-mono text-[7px] uppercase tracking-[0.16em] text-dim">
+          fig.
+        </span>
+      )}
     </div>
   )
 }
 
-function PhoneMotif() {
+function LoopDiagram({ compact }: { compact: boolean }) {
   return (
     <>
-      <div className="absolute inset-y-0 left-1/2 w-[40%] -translate-x-1/2 border-x border-night-line bg-[#0b0b0b] p-[2.5cqw]">
-        <div className="mx-auto h-[0.8cqw] w-[24%] bg-white/20" />
-        <div className="mt-[2.4cqw] border border-night-line bg-white/[0.02] p-[2.2cqw]">
-          <div className="flex justify-between font-mono text-[1.7cqw] text-night-muted">
-            <span>MINI APP</span>
-            <span>A / B / C</span>
-          </div>
-          <div className="mt-[1.8cqw] aspect-[16/11] bg-[radial-gradient(circle_at_60%_35%,#24334d,transparent_55%),linear-gradient(135deg,#101827,#080a0f)]" />
-          <div className="mt-[1.8cqw] flex items-baseline justify-between font-mono">
-            <span className="text-[2cqw]">￥ --</span>
-            <span className="text-[1.6cqw] text-night-muted">已售</span>
-          </div>
-          <div className="mt-[1.4cqw] grid grid-cols-3 gap-[1cqw]">
-            <span className="aspect-square border border-night-line bg-white/[0.03]" />
-            <span className="aspect-square border border-night-line bg-white/[0.03]" />
-            <span className="aspect-square border border-night-line bg-white/[0.03]" />
-          </div>
-          <div className="mt-[2cqw] flex h-[4.5cqw] items-center justify-center bg-[#2f6bff] font-mono text-[1.6cqw] text-white">
-            立即购买
-          </div>
-        </div>
-        <div className="mt-[2.4cqw] flex justify-around">
-          <span className="size-[1.2cqw] bg-white/30" />
-          <span className="size-[1.2cqw] bg-white/15" />
-          <span className="size-[1.2cqw] bg-white/15" />
-          <span className="size-[1.2cqw] bg-white/15" />
-        </div>
-      </div>
-      <span className="absolute bottom-[8%] left-[7%] font-mono text-[1.8cqw] text-night-muted">
-        appId × N
-      </span>
-      <span className="absolute right-[7%] top-[18%] font-mono text-[1.8cqw] text-night-muted">
-        config driven
-      </span>
+      <g className="text-ink/55" stroke="currentColor" strokeWidth="1">
+        <path d="M84 178C84 110 140 72 200 72C260 72 316 110 316 178C316 210 260 222 200 222C140 222 84 210 84 178Z" />
+        <path d="M104 178C104 128 148 96 200 96C252 96 296 128 296 178" strokeDasharray="3 5" />
+      </g>
+      <g className="text-ink" stroke="currentColor" strokeWidth="1.4">
+        <rect x="196" y="68" width="8" height="8" fill="var(--c-accent)" stroke="none" />
+        <rect x="312" y="174" width="8" height="8" fill="var(--c-ink)" stroke="none" />
+        <rect x="196" y="218" width="8" height="8" fill="var(--c-ink)" stroke="none" />
+        <rect x="80" y="174" width="8" height="8" fill="var(--c-ink)" stroke="none" />
+      </g>
+      <g className="text-accent" stroke="currentColor" strokeWidth="1.6">
+        <path d="M176 150l14 14 30-34" />
+      </g>
+      {!compact && (
+        <g>
+          <SvgLabel x={200} y={52}>PLAN</SvgLabel>
+          <SvgLabel x={338} y={182} anchor="start">ACT</SvgLabel>
+          <SvgLabel x={200} y={242}>ASSERT</SvgLabel>
+          <SvgLabel x={62} y={182} anchor="end">REPORT</SvgLabel>
+          <SvgLabel x={200} y={132} accent>QA / LOOP</SvgLabel>
+        </g>
+      )}
     </>
   )
 }
 
-const BARS = [28, 44, 36, 58, 48, 72, 64, 84]
-
-function ChartMotif() {
+function BraidDiagram({ compact }: { compact: boolean }) {
   return (
-    <div className="absolute inset-x-[8%] top-1/2 -translate-y-1/2 border border-night-line bg-black/40 p-[3.4cqw]">
-      <div className="flex justify-between font-mono text-[1.9cqw] text-night-muted">
-        <span>DATA / DASHBOARD</span>
-        <span className="text-[#3fb950]">LIVE</span>
-      </div>
-      <div className="mt-[3cqw] flex h-[20cqw] items-end gap-[1.6cqw]">
-        {BARS.map((height) => (
-          <div key={height} className="flex-1 bg-white/10" style={{ height: `${height}%` }}>
-            <div className="h-full w-full bg-gradient-to-t from-[#2f6bff]/70 to-transparent" />
-          </div>
-        ))}
-      </div>
-      <div className="mt-[2cqw] h-px bg-night-line" />
-      <div className="mt-[2cqw] flex justify-between font-mono text-[1.7cqw] text-night-muted">
-        <span>multi-end</span>
-        <span>realtime</span>
-        <span>dashboard</span>
-      </div>
-    </div>
+    <>
+      <g className="text-ink/55" stroke="currentColor" strokeWidth="1.2">
+        <path d="M40 80C90 170 140 170 200 125C260 80 310 80 360 170" />
+      </g>
+      <circle cx="200" cy="125" r="7" fill="var(--c-panel)" stroke="none" />
+      <g className="text-ink" stroke="currentColor" strokeWidth="1.4">
+        <path d="M40 170C90 80 140 80 200 125C260 170 310 170 360 80" />
+        <rect x="36" y="166" width="8" height="8" fill="var(--c-ink)" stroke="none" />
+        <rect x="356" y="76" width="8" height="8" fill="var(--c-ink)" stroke="none" />
+      </g>
+      <g className="text-ink/55" stroke="currentColor" strokeWidth="1">
+        <path d="M40 80C90 170 140 170 200 125" strokeDasharray="3 5" />
+        <path d="M200 125C260 80 310 80 360 170" strokeDasharray="3 5" />
+      </g>
+      <rect x="196" y="121" width="8" height="8" transform="rotate(45 200 125)" fill="var(--c-accent)" />
+      {!compact && (
+        <g>
+          <SvgLabel x={40} y={62} anchor="start">PROMPT</SvgLabel>
+          <SvgLabel x={360} y={196} anchor="end">RESPONSE</SvgLabel>
+          <SvgLabel x={200} y={152} accent>CONTEXT</SvgLabel>
+        </g>
+      )}
+    </>
   )
 }
 
-function Motif({ visual }: { visual: Visual }) {
+function GridDiagram({ compact }: { compact: boolean }) {
+  const tiles = [
+    { x: 58, y: 46, label: 'POSTER' },
+    { x: 222, y: 46, label: 'VIDEO' },
+    { x: 58, y: 144, label: 'COPY' },
+    { x: 222, y: 144, label: 'RECIPE' },
+  ]
+
+  return (
+    <>
+      <g className="text-ink/55" stroke="currentColor" strokeWidth="1">
+        {tiles.map((tile) => (
+          <rect key={tile.label} x={tile.x} y={tile.y} width="120" height="60" />
+        ))}
+        <path d="M58 206C110 206 110 176 160 166C220 154 220 116 282 106C320 100 320 76 342 76" strokeDasharray="3 5" />
+      </g>
+      <g className="text-ink" stroke="currentColor" strokeWidth="1.4">
+        <path d="M58 206C110 206 110 176 160 166C220 154 220 116 282 106C320 100 320 76 342 76" />
+        <rect x="338" y="72" width="8" height="8" fill="var(--c-accent)" stroke="none" />
+      </g>
+      {!compact && (
+        <g>
+          {tiles.map((tile) => (
+            <SvgLabel key={tile.label} x={tile.x + 10} y={tile.y + 22} anchor="start">
+              {tile.label}
+            </SvgLabel>
+          ))}
+          <SvgLabel x={58} y={228} anchor="start" accent>
+            GENERATED ASSETS
+          </SvgLabel>
+        </g>
+      )}
+    </>
+  )
+}
+
+function BranchDiagram({ compact }: { compact: boolean }) {
+  const apps = [
+    { y: 72, label: 'APP-A' },
+    { y: 126, label: 'APP-B' },
+    { y: 180, label: 'APP-C' },
+  ]
+
+  return (
+    <>
+      <g className="text-ink/55" stroke="currentColor" strokeWidth="1.2">
+        {apps.map((app) => (
+          <path key={app.label} d={`M112 126C170 126 180 ${app.y} 272 ${app.y}`} />
+        ))}
+        <path d="M78 102h34v48H78z" />
+      </g>
+      <g className="text-ink" stroke="currentColor" strokeWidth="1.4">
+        <rect x="78" y="102" width="34" height="48" fill="var(--c-panel)" />
+        <rect x="272" y="54" width="86" height="36" fill="var(--c-panel)" />
+        <rect x="272" y="108" width="86" height="36" fill="var(--c-panel)" stroke="var(--c-accent)" />
+        <rect x="272" y="162" width="86" height="36" fill="var(--c-panel)" />
+      </g>
+      <rect x="110" y="122" width="8" height="8" fill="var(--c-accent)" />
+      {!compact && (
+        <g>
+          <SvgLabel x={95} y={96}>SHELL</SvgLabel>
+          {apps.map((app) => (
+            <SvgLabel key={app.label} x={315} y={app.y + 5}>
+              {app.label}
+            </SvgLabel>
+          ))}
+          <SvgLabel x={78} y={228} anchor="start" accent>
+            APP-ID × N
+          </SvgLabel>
+        </g>
+      )}
+    </>
+  )
+}
+
+function PortalDiagram({ compact }: { compact: boolean }) {
+  const nodes = [
+    { x: 54, y: 38, label: 'APP-A' },
+    { x: 286, y: 38, label: 'APP-B' },
+    { x: 54, y: 176, label: 'APP-C' },
+    { x: 286, y: 176, label: 'APP-D' },
+  ]
+
+  return (
+    <>
+      <g className="text-ink/55" stroke="currentColor" strokeWidth="1.2">
+        {nodes.map((node) => (
+          <path
+            key={node.label}
+            d={`M200 125C160 125 ${node.x + 30} 125 ${node.x + 30} ${node.y + 18}`}
+          />
+        ))}
+        {nodes.map((node) => (
+          <rect key={node.label} x={node.x} y={node.y} width="60" height="36" strokeDasharray="3 3" />
+        ))}
+      </g>
+      <g className="text-ink" stroke="currentColor" strokeWidth="1.4">
+        <rect x="160" y="99" width="80" height="52" fill="var(--c-panel)" stroke="var(--c-accent)" />
+        <path d="M160 125h-20M240 125h20" />
+      </g>
+      <rect x="196" y="121" width="8" height="8" fill="var(--c-accent)" />
+      {!compact && (
+        <g>
+          <SvgLabel x={200} y={91} accent>PORTAL</SvgLabel>
+          {nodes.map((node) => (
+            <SvgLabel key={node.label} x={node.x + 30} y={node.y + 23}>
+              {node.label}
+            </SvgLabel>
+          ))}
+          <SvgLabel x={200} y={232} accent>ONE SHELL / MANY APPS</SvgLabel>
+        </g>
+      )}
+    </>
+  )
+}
+
+function SpoolDiagram({ compact }: { compact: boolean }) {
+  return (
+    <>
+      <g className="text-ink/55" stroke="currentColor" strokeWidth="1.2">
+        <ellipse cx="78" cy="125" rx="22" ry="58" />
+        <ellipse cx="78" cy="125" rx="12" ry="58" />
+        <path d="M56 67h44M56 183h44" />
+        <rect x="236" y="42" width="118" height="66" />
+        <rect x="276" y="132" width="42" height="76" />
+        <rect x="330" y="132" width="42" height="76" />
+        <path d="M100 98C150 98 190 75 236 75" />
+        <path d="M100 125C170 125 220 170 276 170" />
+        <path d="M100 152C170 152 260 170 330 170" />
+      </g>
+      <g className="text-ink" stroke="currentColor" strokeWidth="1.4">
+        <rect x="276" y="132" width="42" height="76" fill="var(--c-panel)" stroke="var(--c-accent)" />
+        <rect x="330" y="132" width="42" height="76" fill="var(--c-panel)" />
+      </g>
+      <rect x="96" y="121" width="8" height="8" fill="var(--c-accent)" />
+      {!compact && (
+        <g>
+          <SvgLabel x={78} y={62}>SPOOL</SvgLabel>
+          <SvgLabel x={295} y={80}>WEB</SvgLabel>
+          <SvgLabel x={297} y={224}>MINI</SvgLabel>
+          <SvgLabel x={351} y={224}>APP</SvgLabel>
+          <SvgLabel x={78} y={228} anchor="start" accent>
+            ONE CODEBASE
+          </SvgLabel>
+        </g>
+      )}
+    </>
+  )
+}
+
+function Diagram({ visual, compact }: { visual: Visual; compact: boolean }) {
   switch (visual) {
-    case 'terminal':
-      return <TerminalMotif />
-    case 'chat':
-      return <ChatMotif />
+    case 'loop':
+      return <LoopDiagram compact={compact} />
+    case 'braid':
+      return <BraidDiagram compact={compact} />
     case 'grid':
-      return <GridMotif />
+      return <GridDiagram compact={compact} />
+    case 'branch':
+      return <BranchDiagram compact={compact} />
     case 'portal':
-      return <PortalMotif />
-    case 'phone':
-      return <PhoneMotif />
-    case 'chart':
-      return <ChartMotif />
+      return <PortalDiagram compact={compact} />
+    case 'spool':
+      return <SpoolDiagram compact={compact} />
   }
 }
 
@@ -242,30 +317,20 @@ interface ProjectVisualProps {
   project: ProjectItem
   index?: number
   className?: string
+  compact?: boolean
 }
 
-export function ProjectVisual({ project, index = 0, className = '' }: ProjectVisualProps) {
+export function ProjectVisual({
+  project,
+  index = 0,
+  className = '',
+  compact = false,
+}: ProjectVisualProps) {
   const visual = VISUALS[project.slug] ?? FALLBACK_VISUAL[project.category]
 
   return (
-    <div
-      className={`relative overflow-hidden bg-night text-night-fg ring-1 ring-inset ring-black/5 dark:ring-white/10 ${className}`}
-      style={{ containerType: 'inline-size' }}
-      aria-hidden="true"
-    >
-      <div className="dots-dark absolute inset-0 opacity-50" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,255,255,0.06),transparent_60%)]" />
-
-      <span className="absolute left-[5%] top-[4.5%] z-10 font-mono text-[2.1cqw] uppercase tracking-[0.14em] text-white/35">
-        {LABELS[visual]}
-      </span>
-      <span className="absolute bottom-[1%] right-[4%] z-0 font-mono text-[13cqw] leading-none text-white/[0.04]">
-        {String(index + 1).padStart(2, '0')}
-      </span>
-
-      <div className="absolute inset-0">
-        <Motif visual={visual} />
-      </div>
-    </div>
+    <Frame label={LABELS[visual]} index={index} className={className} compact={compact}>
+      <Diagram visual={visual} compact={compact} />
+    </Frame>
   )
 }

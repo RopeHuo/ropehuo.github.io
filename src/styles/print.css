@@ -8,17 +8,12 @@
     color: #000000 !important;
   }
 
-  .site-sidebar,
-  .site-mobile-header,
+  .site-masthead,
   .site-footer,
   .skip-link,
   .no-print,
   .post-toc {
     display: none !important;
-  }
-
-  .site-body {
-    padding-left: 0 !important;
   }
 
   .site-shell {

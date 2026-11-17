@@ -19,7 +19,7 @@ export function BlogPage({ content, posts }: BlogPageProps) {
         intro={content.header.intro}
       />
 
-      <div className="border-b border-line">
+      <div className="mt-8 border-t border-line">
         {posts.map((post) => (
           <PostRow
             key={post.slug}
@@ -30,7 +30,7 @@ export function BlogPage({ content, posts }: BlogPageProps) {
         ))}
       </div>
 
-      <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.08em] text-dim">
+      <p className="mt-6 font-mono text-[9px] uppercase tracking-[0.12em] text-dim">
         {content.countTemplate.replace('{count}', String(posts.length))}
       </p>
     </>

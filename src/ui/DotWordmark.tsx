@@ -31,16 +31,10 @@ export function DotWordmark({ className = '' }: { className?: string }) {
       className={className}
       fill="currentColor"
       aria-hidden="true"
-      shapeRendering="crispEdges"
+      shapeRendering="geometricPrecision"
     >
       {dots.map((dot) => (
-        <rect
-          key={`${dot.x}-${dot.y}`}
-          x={dot.x + 0.14}
-          y={dot.y + 0.14}
-          width="0.72"
-          height="0.72"
-        />
+        <circle key={`${dot.x}-${dot.y}`} cx={dot.x + 0.5} cy={dot.y + 0.5} r="0.34" />
       ))}
     </svg>
   )

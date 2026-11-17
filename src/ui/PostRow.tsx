@@ -14,22 +14,25 @@ export function PostRow({ post, href, readTimeTemplate }: PostRowProps) {
   return (
     <AppLink
       href={href}
-      className="group grid gap-2 border-t border-line py-4 sm:grid-cols-[92px_minmax(0,1fr)_24px] sm:items-start sm:gap-5"
+      className="group grid gap-2 border-b border-line py-5 transition-colors hover:bg-panel/50 sm:grid-cols-[112px_minmax(0,1fr)_92px] sm:items-start sm:gap-6 sm:px-2"
     >
-      <span className="pt-0.5 font-mono text-[11px] text-dim">{formatDate(post.date)}</span>
+      <span className="pt-1 font-mono text-[9px] uppercase tracking-[0.1em] text-dim">
+        {formatDate(post.date)}
+      </span>
 
       <div className="min-w-0">
-        <h3 className="font-mono text-[15px] leading-6 tracking-tight transition-colors group-hover:text-accent">
+        <h3 className="font-display text-[17px] font-semibold leading-snug tracking-[-0.025em] transition-colors group-hover:text-accent sm:text-[19px]">
           {post.title}
         </h3>
-        <p className="mt-1 text-[13px] leading-5 text-muted">{post.summary}</p>
-        <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.08em] text-dim">
-          {post.tags.join(' / ')} · {readTime}
+        <p className="mt-1.5 max-w-2xl text-[13px] leading-6 text-muted">{post.summary}</p>
+        <p className="mt-2.5 font-mono text-[9px] uppercase tracking-[0.1em] text-dim">
+          {post.tags.join(' / ')}
         </p>
       </div>
 
-      <span className="hidden pt-0.5 font-mono text-[12px] text-dim transition-colors group-hover:text-accent sm:block">
-        →
+      <span className="hidden pt-1 text-right font-mono text-[9px] uppercase tracking-[0.1em] text-dim transition-colors group-hover:text-accent sm:block">
+        {readTime}
+        <span className="ml-2">→</span>
       </span>
     </AppLink>
   )

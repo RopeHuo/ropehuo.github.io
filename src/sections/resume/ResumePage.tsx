@@ -13,16 +13,16 @@ interface ResumePageProps {
 export function ResumePage({ content, projects, name }: ResumePageProps) {
   return (
     <>
-      <header className="resume-header pb-10 pt-2">
+      <header className="resume-header border-b border-line pb-10 pt-4">
         <div className="flex flex-wrap items-start justify-between gap-6">
           <div>
             <p className="mono-label">
-              {content.header.index} / {content.header.label}
+              <span className="text-accent">{content.header.index}</span> / {content.header.label}
             </p>
-            <h1 className="resume-title mt-4 font-mono text-[44px] leading-[1.02] tracking-[-0.045em] sm:text-[64px]">
+            <h1 className="resume-title mt-5 font-display text-[clamp(3rem,7vw,5.5rem)] font-semibold leading-[0.96] tracking-[-0.06em]">
               {name}
             </h1>
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.12em] text-dim">
+            <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.14em] text-dim">
               {content.header.role} · {content.header.experience}
             </p>
           </div>
@@ -33,11 +33,11 @@ export function ResumePage({ content, projects, name }: ResumePageProps) {
           </button>
         </div>
 
-        <p className="mt-6 max-w-4xl text-balance text-[15px] leading-7 text-muted">
+        <p className="mt-6 max-w-3xl text-balance text-[15px] leading-8 text-muted">
           {content.intro}
         </p>
 
-        <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px]">
+        <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px]">
           {content.contacts.map((contact) => (
             <a
               key={contact.label}
@@ -55,7 +55,7 @@ export function ResumePage({ content, projects, name }: ResumePageProps) {
         <div className="grid gap-x-10 gap-y-5 sm:grid-cols-2">
           {content.skillGroups.map((group) => (
             <div key={group.label} className="print-avoid-break">
-              <h3 className="font-mono text-[10px] uppercase tracking-[0.1em] text-dim">
+              <h3 className="font-mono text-[9px] uppercase tracking-[0.12em] text-dim">
                 {group.label}
               </h3>
               <p className="mt-1.5 text-[13px] leading-6 text-muted">{group.items.join(' / ')}</p>
@@ -69,19 +69,18 @@ export function ResumePage({ content, projects, name }: ResumePageProps) {
           {content.experience.map((job) => (
             <div key={job.company} className="print-avoid-break">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                <h3 className="font-mono text-[14px] leading-6 text-ink">
+                <h3 className="font-display text-[15px] font-semibold leading-6 tracking-[-0.02em]">
                   {job.company}
-                  <span className="ml-2 text-[11px] text-muted">{job.role}</span>
+                  <span className="ml-2 font-sans text-[11px] font-normal text-muted">
+                    {job.role}
+                  </span>
                 </h3>
-                <span className="font-mono text-[10px] text-dim">{job.period}</span>
+                <span className="font-mono text-[9px] text-dim">{job.period}</span>
               </div>
               <ul className="mt-3 space-y-1.5">
                 {job.points.map((point) => (
                   <li key={point} className="flex gap-2.5 text-[13px] leading-6 text-muted">
-                    <span
-                      className="mt-[0.68rem] size-1 shrink-0 bg-accent"
-                      aria-hidden="true"
-                    />
+                    <span className="mt-[0.68rem] size-1 shrink-0 bg-accent" aria-hidden="true" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -98,12 +97,14 @@ export function ResumePage({ content, projects, name }: ResumePageProps) {
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                 <AppLink
                   href={routes.project(project.slug)}
-                  className="font-mono text-[13px] leading-6 transition-colors hover:text-accent"
+                  className="font-display text-[13px] font-semibold leading-6 tracking-[-0.01em] transition-colors hover:text-accent"
                 >
                   {project.title}
-                  <span className="ml-2 font-sans text-[11px] text-dim">{project.role}</span>
+                  <span className="ml-2 font-sans text-[11px] font-normal text-dim">
+                    {project.role}
+                  </span>
                 </AppLink>
-                <span className="font-mono text-[10px] text-dim">{project.period}</span>
+                <span className="font-mono text-[9px] text-dim">{project.period}</span>
               </div>
               <p className="mt-1 text-[12px] leading-5 text-muted">{project.summary}</p>
             </li>
@@ -113,7 +114,7 @@ export function ResumePage({ content, projects, name }: ResumePageProps) {
 
       <ResumeSection index="04" label={content.sections.education}>
         <div className="print-avoid-break">
-          <p className="font-mono text-[13px]">
+          <p className="font-display text-[13px] font-semibold">
             {content.education.degree} · {content.education.major}
           </p>
         </div>
@@ -130,14 +131,14 @@ export function ResumePage({ content, projects, name }: ResumePageProps) {
                 className="group flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line pb-2 text-[13px] transition-colors hover:text-accent"
               >
                 <span>{article.title}</span>
-                <span className="font-mono text-[10px] text-dim">{article.source} ↗</span>
+                <span className="font-mono text-[9px] text-dim">{article.source} ↗</span>
               </a>
             </li>
           ))}
         </ul>
       </ResumeSection>
 
-      <p className="no-print mt-6 font-mono text-[10px] leading-5 text-dim">
+      <p className="no-print mt-6 font-mono text-[9px] leading-5 text-dim">
         {content.header.printNote}
       </p>
     </>

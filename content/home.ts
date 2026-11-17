@@ -15,7 +15,7 @@ export const homeContent: HomeContent = {
     ],
   },
   work: {
-    label: '[1] selected work',
+    label: 'selected work',
     allLabel: '全部项目',
     cardLabel: '查看项目',
   },

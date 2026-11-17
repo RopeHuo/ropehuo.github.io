@@ -1,18 +1,19 @@
 import type { ReactNode } from 'react'
+import { SectionHead } from './SectionHead'
 
 interface SectionProps {
+  index: string
   label: string
+  note?: string
   children: ReactNode
   className?: string
 }
 
-export function Section({ label, children, className = '' }: SectionProps) {
+export function Section({ index, label, note, children, className = '' }: SectionProps) {
   return (
-    <section
-      className={`grid gap-5 border-t border-line py-12 lg:grid-cols-[150px_minmax(0,1fr)] lg:gap-12 ${className}`}
-    >
-      <h2 className="font-sans text-[13px] leading-6 text-ink">{label}</h2>
-      <div className="min-w-0">{children}</div>
+    <section className={`py-14 lg:py-20 ${className}`}>
+      <SectionHead index={index} label={label} note={note} />
+      <div className="mt-8 lg:mt-10">{children}</div>
     </section>
   )
 }

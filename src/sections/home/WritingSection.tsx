@@ -13,8 +13,8 @@ interface WritingSectionProps {
 
 export function WritingSection({ content, posts, readTimeTemplate }: WritingSectionProps) {
   return (
-    <Section label={content.label}>
-      <div>
+    <Section index="03" label={content.label} note="field notes / latest">
+      <div className="border-t border-line">
         {posts.map((post) => (
           <PostRow
             key={post.slug}

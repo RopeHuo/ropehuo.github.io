@@ -4,7 +4,7 @@ RopeHuo 的个人网站源码。纯静态前端，构建后部署在 GitHub Page
 
 - 线上地址：<https://ropehuo.github.io>
 - 技术栈：Vite + React 19 + TypeScript + Tailwind CSS v4 + React Router
-- 视觉：参考 opencode.ai 的文档 / 终端风格——左侧编号导航、等宽标题、直角卡片、细线分隔
+- 视觉：RopeHuo / Strand v1.0——暖纸色、信号橙、无衬线标题 + 等宽标注、绳结线稿；跨项目规范在工作区 `../brand/`
 - 博客：Markdown 文件 + frontmatter，构建时由 `import.meta.glob` 直接读取
 - 部署：GitHub Actions 构建并上传 `dist/`，路由回退由 `dist/404.html` 处理
 
@@ -50,7 +50,7 @@ src/
   logic/                 # 逻辑：主题、筛选、TOC、滚动、meta、路由适配
   styles/                # 样式：tokens / base / components / prose / print
   ui/                    # 展示原语：按钮、标签、标题、视觉组件
-  layout/                # 站点外壳：侧栏、移动端导航、页脚
+  layout/                # 站点外壳：顶部导航、页脚
   sections/              # 组合层：把内容 props 映射成页面区块
   pages/                 # 装配层：读取内容、调用逻辑、渲染 sections
 
@@ -87,6 +87,15 @@ tags: [前端, 工程化]
 - 博客 / 404 文案：`content/blog.ts`、`content/notFound.ts`
 
 这些文件都是纯数据，不包含组件和样式。改完内容不需要碰 `src/`。
+
+## 设计系统 / Strand
+
+站点使用 **RopeHuo / Strand v1.0**：暖纸 + 墨 + 信号橙，无衬线大标题 + 等宽标注，绳结线稿代替假终端窗口。
+
+- 规范、色板、字体、组件与跨项目用法：工作区 `../brand/README.md`
+- Token 源：工作区 `../brand/tokens.css`；本站 vendored 到 `src/styles/tokens.css`
+- 标志源：工作区 `../brand/logo.svg`、`../brand/mark.svg`
+- 改 token 时同步 `../qagent-proof/styles.css`，并更新 `brand/README.md` 的版本号
 
 ## 换样式 / 换逻辑
 
