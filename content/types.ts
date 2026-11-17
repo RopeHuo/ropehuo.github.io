@@ -118,6 +118,67 @@ export interface HomeContent {
   }
 }
 
+export interface BrandColor {
+  token: string
+  light: string
+  dark: string
+  role: string
+}
+
+export interface BrandTypeSample {
+  name: string
+  kind: 'display' | 'body' | 'mono'
+  sample: string
+  spec: string
+}
+
+export interface BrandDuality {
+  name: string
+  role: string
+  body: string
+  keywords: string[]
+}
+
+export interface BrandLadder {
+  layer: string
+  zh: string
+  meaning: string
+}
+
+export interface BrandContent {
+  meta: {
+    title: string
+    description: string
+  }
+  header: {
+    index: string
+    label: string
+    title: string
+    subtitle: string
+    intro: string
+  }
+  manifesto: {
+    zh: string[]
+    en: string[]
+    note: string
+  }
+  duality: BrandDuality[]
+  ladder: BrandLadder[]
+  logo: {
+    notes: string[]
+    wordmark: string
+  }
+  colors: BrandColor[]
+  type: BrandTypeSample[]
+  spacing: { value: string }[]
+  voice: {
+    dos: string[]
+    donts: string[]
+  }
+  usage: string[]
+  version: string
+}
+
 export interface ProjectEnd {
   label: string
   body: string

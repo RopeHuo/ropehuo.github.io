@@ -28,6 +28,7 @@ const routes = [
   ...projectRoutes,
   '/blog',
   '/resume',
+  '/brand',
   '/qagent-proof',
   ...postRoutes,
 ]

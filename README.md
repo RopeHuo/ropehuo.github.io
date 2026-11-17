@@ -41,6 +41,7 @@ content/                 # 内容层：文案、项目、简历、文章，不�
   projects.ts            # 项目内容
   resume.ts              # 简历内容
   blog.ts                # 博客页文案
+  brand.ts               # 品牌页文案
   notFound.ts            # 404 文案
   ui.ts                  # 通用 UI 文案
   posts/                 # 博客文章（Markdown）
@@ -51,7 +52,7 @@ src/
   styles/                # 样式：tokens / base / components / prose / print
   ui/                    # 展示原语：按钮、标签、标题、视觉组件
   layout/                # 站点外壳：顶部导航、页脚
-  sections/              # 组合层：把内容 props 映射成页面区块
+  sections/              # 组合层：把内容 props 映射成页面区块（含 brand/）
   pages/                 # 装配层：读取内容、调用逻辑、渲染 sections
 
 public/                  # favicon、分享图、robots.txt
@@ -90,7 +91,7 @@ tags: [前端, 工程化]
 
 ## 设计系统 / Strand
 
-站点使用 **RopeHuo / Strand v1.0**：暖纸 + 墨 + 信号橙，无衬线大标题 + 等宽标注，绳结线稿代替假终端窗口。
+站点使用 **RopeHuo / Strand v1.0**：暖纸 + 墨 + 信号橙，无衬线大标题 + 等宽标注，绳结线稿代替假终端窗口。线上说明书在 `/brand`。
 
 - 规范、色板、字体、组件与跨项目用法：工作区 `../brand/README.md`
 - Token 源：工作区 `../brand/tokens.css`；本站 vendored 到 `src/styles/tokens.css`

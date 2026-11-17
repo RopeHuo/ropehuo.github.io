@@ -1,5 +1,6 @@
 import type { SiteContent } from '../../content/types'
 import { AppLink } from '../logic/AppLink'
+import { routes } from '../logic/routes'
 import { DotWordmark } from '../ui/DotWordmark'
 import { Logo } from '../ui/Logo'
 
@@ -35,6 +36,17 @@ export function SiteFooter({ site }: { site: SiteContent }) {
                   </AppLink>
                 </li>
               ))}
+              <li>
+                <AppLink
+                  href={routes.brand}
+                  className="group inline-flex items-baseline gap-2 font-mono text-[11px] text-muted transition-colors hover:text-ink"
+                >
+                  <span className="text-[9px] text-dim transition-colors group-hover:text-accent">
+                    04
+                  </span>
+                  品牌
+                </AppLink>
+              </li>
             </ul>
           </div>
 

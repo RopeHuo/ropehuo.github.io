@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import { siteContent, uiCopy } from './content'
 import { Layout } from './layout/Layout'
 import Blog from './pages/Blog'
+import Brand from './pages/Brand'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 import Project from './pages/Project'
@@ -39,6 +40,7 @@ export default function App() {
           }
         />
         <Route path="resume" element={<Resume />} />
+        <Route path="brand" element={<Brand />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
