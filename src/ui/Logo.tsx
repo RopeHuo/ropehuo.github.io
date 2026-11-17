@@ -1,20 +1,19 @@
-export function Logo({ className = 'size-7' }: { className?: string }) {
+interface LogoProps {
+  className?: string
+  ember?: string
+}
+
+export function Logo({ className = 'size-7', ember = 'var(--c-accent)' }: LogoProps) {
   return (
     <svg viewBox="0 0 32 32" className={className} aria-hidden="true" fill="none">
-      <path d="M3.5 3.5h25v25h-25z" stroke="currentColor" strokeWidth="1.2" />
       <path
-        d="M10 25V8h7.5a4.5 4.5 0 0 1 0 9H11"
+        d="M8 26V4h9a6 6 0 0 1 0 12h-5l10 10"
         stroke="currentColor"
-        strokeWidth="2.2"
+        strokeWidth="2.6"
         strokeLinecap="square"
+        strokeLinejoin="miter"
       />
-      <path
-        d="M16.5 17 24 25"
-        stroke="currentColor"
-        strokeWidth="2.2"
-        strokeLinecap="square"
-      />
-      <rect x="25" y="3" width="5" height="5" fill="var(--c-accent)" />
+      <rect x="19.5" y="23.5" width="5" height="5" fill={ember} />
     </svg>
   )
 }

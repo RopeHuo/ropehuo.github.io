@@ -38,7 +38,7 @@ export function Masthead({ site, labels, activeHref }: MastheadProps) {
           className="group flex shrink-0 items-center gap-3"
           ariaLabel={`${site.name} ${labels.homeLabel}`}
         >
-          <Logo className="size-7 text-ink transition-colors group-hover:text-accent" />
+          <Logo className="size-8 text-ink transition-colors group-hover:text-accent" />
           <span className="flex flex-col leading-none">
             <span className="font-mono text-[13px] tracking-[-0.02em]">{site.wordmark}</span>
             <span className="mt-1.5 font-mono text-[8px] uppercase tracking-[0.18em] text-dim">

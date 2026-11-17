@@ -130,13 +130,13 @@ export function BrandPage({ content, project }: BrandPageProps) {
       <Section index="03" label="logo" note="MARK / WORDMARK">
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="plate flex flex-col items-center justify-center gap-4 border-[#ded6c8] bg-[#f3efe6] py-12">
-            <Logo className="size-20 text-[#191713]" />
+            <Logo className="size-20 text-[#191713]" ember="#d84a21" />
             <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#746b5e]">
               light / ink
             </p>
           </div>
           <div className="plate flex flex-col items-center justify-center gap-4 border-[#342f27] bg-[#1b1814] py-12">
-            <Logo className="size-20 text-[#f4eee4]" />
+            <Logo className="size-20 text-[#f4eee4]" ember="#ff6f47" />
             <p className="font-mono text-[8px] uppercase tracking-[0.16em] text-[#a79d8f]">
               dark / paper
             </p>

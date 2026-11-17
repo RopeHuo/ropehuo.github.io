@@ -11,7 +11,7 @@ export function SiteFooter({ site }: { site: SiteContent }) {
         <div className="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <Logo className="size-6 text-ink" />
+              <Logo className="size-7 text-ink" />
               <span className="font-mono text-[13px] tracking-[-0.02em]">{site.wordmark}</span>
             </div>
             <p className="mt-4 max-w-xs text-[13px] leading-6 text-muted">{site.tagline}</p>

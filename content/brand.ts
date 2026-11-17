@@ -64,9 +64,9 @@ export const brandContent: BrandContent = {
   logo: {
     wordmark: 'ropehuo',
     notes: [
-      '细线方框 = 规格纸',
-      '单线 R = RopeHuo',
-      '右上角橙块 = 绳结 / 火点',
+      '一条连续的线 = Rope',
+      '末端橙块 = 火点（Huo）',
+      '无外框；需要容器时用纸色 / 墨色底板',
       '字标：ropehuo，小写等宽，-0.02em',
     ],
   },
