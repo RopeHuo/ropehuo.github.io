@@ -5,6 +5,7 @@ import { Layout } from './layout/Layout'
 import Blog from './pages/Blog'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
+import Project from './pages/Project'
 import Projects from './pages/Projects'
 import Resume from './pages/Resume'
 
@@ -27,6 +28,7 @@ export default function App() {
       <Route element={<Layout site={siteContent} labels={uiCopy} />}>
         <Route index element={<Home />} />
         <Route path="projects" element={<Projects />} />
+        <Route path="projects/:slug" element={<Project />} />
         <Route path="blog" element={<Blog />} />
         <Route
           path="blog/:slug"

@@ -81,7 +81,7 @@ tags: [前端, 工程化]
 ### 改项目 / 简历 / 首页
 
 - 首页文案：`content/home.ts`
-- 项目卡片：`content/projects.ts`
+- 项目卡片与详情：`content/projects.ts`。详情按「两端 / 结 / 承重 / 点亮」四段写在每个项目的 `detail` 字段里，模板是 `src/sections/projects/ProjectPage.tsx`
 - 简历内容、技能、工作经历：`content/resume.ts`
 - 站点名称、邮箱、社交链接、导航、页脚：`content/site.ts`
 - 博客 / 404 文案：`content/blog.ts`、`content/notFound.ts`

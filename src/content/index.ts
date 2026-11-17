@@ -19,3 +19,12 @@ export const featuredProjects = projectItems.filter((project) => project.feature
 export function getProjectBySlug(slug: string) {
   return projectItems.find((project) => project.slug === slug)
 }
+
+export function getAdjacentProjects(slug: string) {
+  const index = projectItems.findIndex((project) => project.slug === slug)
+  if (index === -1) return {}
+  return {
+    previous: index > 0 ? projectItems[index - 1] : undefined,
+    next: index < projectItems.length - 1 ? projectItems[index + 1] : undefined,
+  }
+}

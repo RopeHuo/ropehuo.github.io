@@ -1,4 +1,4 @@
-import { copyFile, readdir, writeFile } from 'node:fs/promises'
+import { copyFile, readFile, readdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 const ORIGIN = 'https://ropehuo.github.io'
@@ -12,7 +12,25 @@ const postRoutes = postFiles
   .filter((file) => file.endsWith('.md'))
   .map((file) => `/blog/${file.replace(/\.md$/, '')}`)
 
-const routes = ['/', '/projects', '/blog', '/resume', '/qagent-proof', ...postRoutes]
+// content/projects.ts 是 TS 源文件，postbuild 不引入额外转译器，直接读取 slug。
+// 如果以后改 slug 的写法，需要同步这个正则。
+const projectsSource = await readFile('content/projects.ts', 'utf8')
+const projectRoutes = [...projectsSource.matchAll(/^\s+slug: ['"]([^'"]+)['"],$/gm)].map(
+  (match) => `/projects/${match[1]}`,
+)
+if (projectRoutes.length === 0) {
+  throw new Error('postbuild: no project routes found in content/projects.ts')
+}
+
+const routes = [
+  '/',
+  '/projects',
+  ...projectRoutes,
+  '/blog',
+  '/resume',
+  '/qagent-proof',
+  ...postRoutes,
+]
 const lastmod = new Date().toISOString().slice(0, 10)
 
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

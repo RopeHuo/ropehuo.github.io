@@ -4,5 +4,5 @@ export const routes = {
   blog: '/blog',
   resume: '/resume',
   post: (slug: string) => `/blog/${slug}`,
-  project: (slug: string) => `/projects#${slug}`,
+  project: (slug: string) => `/projects/${slug}`,
 }

@@ -118,6 +118,42 @@ export interface HomeContent {
   }
 }
 
+export interface ProjectEnd {
+  label: string
+  body: string
+}
+
+export interface ProjectDecision {
+  title: string
+  body: string
+}
+
+export interface ProjectEvidence {
+  label: string
+  value: string
+}
+
+export interface ProjectDetail {
+  ends: {
+    left: ProjectEnd
+    right: ProjectEnd
+    note: string
+  }
+  knot: {
+    intro: string
+    decisions: ProjectDecision[]
+  }
+  load: {
+    intro: string
+    points: string[]
+    evidence: ProjectEvidence[]
+  }
+  light: {
+    intro: string
+    points: string[]
+  }
+}
+
 export interface ProjectItem {
   slug: string
   title: string
@@ -129,6 +165,7 @@ export interface ProjectItem {
   summary: string
   highlights: string[]
   stack: string[]
+  detail: ProjectDetail
 }
 
 export interface ProjectsContent {
@@ -145,8 +182,18 @@ export interface ProjectsContent {
   filters: { key: ProjectCategory | 'all'; label: string }[]
   note: string
   actions: {
-    experience: string
+    project: string
     post: string
+  }
+  nav: {
+    back: string
+    previous: string
+    next: string
+  }
+  notFound: {
+    label: string
+    title: string
+    actionLabel: string
   }
   items: ProjectItem[]
 }
