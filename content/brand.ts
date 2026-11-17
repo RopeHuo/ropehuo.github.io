@@ -67,6 +67,7 @@ export const brandContent: BrandContent = {
       '一条连续的线 = Rope',
       '末端橙块 = 火点（Huo）',
       '无外框；需要容器时用纸色 / 墨色底板',
+      '线宽 3.1 / 火点 5.8（小尺寸优先）',
       '字标：ropehuo，小写等宽，-0.02em',
     ],
   },

@@ -9,11 +9,11 @@ export function Logo({ className = 'size-7', ember = 'var(--c-accent)' }: LogoPr
       <path
         d="M8 26V4h9a6 6 0 0 1 0 12h-5l10 10"
         stroke="currentColor"
-        strokeWidth="2.6"
+        strokeWidth="3.1"
         strokeLinecap="square"
         strokeLinejoin="miter"
       />
-      <rect x="19.5" y="23.5" width="5" height="5" fill={ember} />
+      <rect x="19.1" y="23.1" width="5.8" height="5.8" fill={ember} />
     </svg>
   )
 }
