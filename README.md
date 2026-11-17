@@ -111,10 +111,7 @@ tags: [前端, 工程化]
 
 ## 部署到 GitHub Pages
 
-仓库使用两个分支：
-
-- `main`：源码（默认开发分支）
-- `master`：构建产物，由 GitHub Actions 自动推送，GitHub Pages 从这个分支发布
+仓库只有 `main` 一个分支；GitHub Pages 使用 **GitHub Actions** 发布，不再维护 `master` / `gh-pages` 部署分支。
 
 首次配置：
 
@@ -126,10 +123,15 @@ tags: [前端, 工程化]
    git push -u origin main
    ```
 
-3. 打开仓库 **Settings → Pages**，Source 选择 **Deploy from a branch**，Branch 选 **`master` / `(root)`**。
-4. 之后每次 push 到 `main`，`.github/workflows/deploy.yml` 会构建并自动更新 `master`。
+3. 打开仓库 **Settings → Pages**，Source 选择 **GitHub Actions**。
+4. 之后每次 push 到 `main`，`.github/workflows/deploy.yml` 会构建 `dist/` 并直接发布；不需要提交 `dist/`，也不用手动切分支。
 
-不需要提交 `dist/`，也不用手动切 `gh-pages` 分支。
+工作流还会把 private `qagent-proof` 的落地页聚合到 `/qagent-proof/`：
+
+- 需要仓库 secret `QAGENT_PROOF_TOKEN`（读取 private `qagent-proof`）。
+- `qagent-proof` 自己的 Pages 必须保持关闭，否则会遮蔽主站聚合页。
+- `qagent-proof` 更新页面文件时，通过 `repository_dispatch` 触发本站重建。
+- 聚合失败时会发布 fallback 页面，主站仍会正常部署。
 
 ## 几个说明
 
