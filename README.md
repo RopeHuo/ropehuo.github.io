@@ -140,7 +140,8 @@ tags: [前端, 工程化]
 
 - 需要仓库 secret `QAGENT_PROOF_TOKEN`（读取 private `qagent`；secret 名沿用历史命名）。
 - `qagent` 自己的 Pages 必须保持关闭，否则会遮蔽主站聚合页。
-- `qagent` 更新页面文件时，通过 `repository_dispatch` 触发本站重建。
+- `qagent` 更新页面文件或源码时，通过 `repository_dispatch` 触发本站重建。
+- 同一工作流会在 `qagent-src` 里执行 `pnpm install && pnpm build:bundle`，把 `dist/install/` 与 `install.sh` 发布到 `/qagent/download/` 和 `/qagent/install.sh`；构建失败只丢安装包，页面照常发布。
 - 聚合失败时会发布 fallback 页面，主站仍会正常部署。
 
 ## 几个说明

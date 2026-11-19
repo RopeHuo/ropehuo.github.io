@@ -49,6 +49,15 @@ jobs:
           token: ${{ secrets.QAGENT_PROOF_TOKEN }}
           path: qagent-src
 
+      # 从 qagent 源码构建 curl 安装产物（失败只影响下载，不影响主站）
+      - name: Build qagent install bundle
+        if: steps.qagent.outcome == 'success'
+        continue-on-error: true
+        working-directory: qagent-src
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm build:bundle
+
       - name: Inject qagent page
         if: always()
         run: |
@@ -85,6 +94,16 @@ jobs:
             </body>
           </html>
           HTML
+          fi
+
+          # curl 安装产物：/qagent/install.sh + /qagent/download/*
+          if [ -d qagent-src/dist/install ] && [ -f qagent-src/install.sh ]; then
+            mkdir -p dist/qagent/download
+            cp -R qagent-src/dist/install/. dist/qagent/download/
+            cp qagent-src/install.sh dist/qagent/install.sh
+            echo "qagent install bundle: $(node -p 'require("./dist/qagent/download/package.json").version')"
+          else
+            echo "::warning::qagent install bundle unavailable; install.sh not published"
           fi
 
       - uses: actions/configure-pages@v5
