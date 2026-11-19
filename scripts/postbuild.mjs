@@ -29,7 +29,7 @@ const routes = [
   '/blog',
   '/resume',
   '/brand',
-  '/qagent-proof',
+  '/qagent',
   ...postRoutes,
 ]
 const lastmod = new Date().toISOString().slice(0, 10)

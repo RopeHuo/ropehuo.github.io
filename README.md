@@ -96,7 +96,7 @@ tags: [前端, 工程化]
 - 规范、色板、字体、组件与跨项目用法：工作区 `../brand/README.md`
 - Token 源：工作区 `../brand/tokens.css`；本站 vendored 到 `src/styles/tokens.css`
 - 标志源：工作区 `../brand/logo.svg`、`../brand/mark.svg`
-- 改 token 时同步 `../qagent-proof/styles.css`，并更新 `brand/README.md` 的版本号
+- 改 token 时同步 `../qagent/styles.css`，并更新 `brand/README.md` 的版本号
 
 ## 换样式 / 换逻辑
 
@@ -136,11 +136,11 @@ tags: [前端, 工程化]
 3. 打开仓库 **Settings → Pages**，Source 选择 **GitHub Actions**。
 4. 之后每次 push 到 `main`，`.github/workflows/deploy.yml` 会构建 `dist/` 并直接发布；不需要提交 `dist/`，也不用手动切分支。
 
-工作流还会把 private `qagent-proof` 的落地页聚合到 `/qagent-proof/`：
+工作流还会把 private `qagent` 的落地页聚合到 `/qagent/`：
 
-- 需要仓库 secret `QAGENT_PROOF_TOKEN`（读取 private `qagent-proof`）。
-- `qagent-proof` 自己的 Pages 必须保持关闭，否则会遮蔽主站聚合页。
-- `qagent-proof` 更新页面文件时，通过 `repository_dispatch` 触发本站重建。
+- 需要仓库 secret `QAGENT_PROOF_TOKEN`（读取 private `qagent`；secret 名沿用历史命名）。
+- `qagent` 自己的 Pages 必须保持关闭，否则会遮蔽主站聚合页。
+- `qagent` 更新页面文件时，通过 `repository_dispatch` 触发本站重建。
 - 聚合失败时会发布 fallback 页面，主站仍会正常部署。
 
 ## 几个说明

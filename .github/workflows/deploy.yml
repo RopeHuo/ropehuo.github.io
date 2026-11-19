@@ -5,7 +5,7 @@ on:
     branches: [main]
   workflow_dispatch:
   repository_dispatch:
-    types: [qagent-proof-update]
+    types: [qagent-update]
 
 permissions:
   contents: read
@@ -37,37 +37,37 @@ jobs:
       - name: Build
         run: pnpm build
 
-      # 聚合 qagent-proof 的静态页面到 dist/qagent-proof/
-      # qagent-proof 为 private 仓库，用 QAGENT_PROOF_TOKEN 读取
-      - name: Checkout qagent-proof
+      # 聚合 qagent 的静态页面到 dist/qagent/
+      # qagent 为 private 仓库，用 QAGENT_REPO_TOKEN 读取（secret 名沿用历史命名）
+      - name: Checkout qagent
         id: qagent
         continue-on-error: true
         uses: actions/checkout@v4
         with:
-          repository: RopeHuo/qagent-proof
+          repository: RopeHuo/qagent
           ref: main
           token: ${{ secrets.QAGENT_PROOF_TOKEN }}
-          path: qagent-proof-src
+          path: qagent-src
 
-      - name: Inject qagent-proof page
+      - name: Inject qagent page
         if: always()
         run: |
-          mkdir -p dist/qagent-proof
-          if [ -f qagent-proof-src/index.html ] && [ -f qagent-proof-src/styles.css ]; then
-            cp qagent-proof-src/index.html qagent-proof-src/styles.css dist/qagent-proof/
-            if [ -f qagent-proof-src/.nojekyll ]; then
-              cp qagent-proof-src/.nojekyll dist/qagent-proof/
+          mkdir -p dist/qagent
+          if [ -f qagent-src/index.html ] && [ -f qagent-src/styles.css ]; then
+            cp qagent-src/index.html qagent-src/styles.css dist/qagent/
+            if [ -f qagent-src/.nojekyll ]; then
+              cp qagent-src/.nojekyll dist/qagent/
             fi
           else
-            echo "::warning::qagent-proof checkout unavailable; publishing fallback page"
-            cat > dist/qagent-proof/index.html <<'HTML'
+            echo "::warning::qagent checkout unavailable; publishing fallback page"
+            cat > dist/qagent/index.html <<'HTML'
           <!doctype html>
           <html lang="zh-CN">
             <head>
               <meta charset="UTF-8" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0" />
               <meta name="color-scheme" content="dark" />
-              <title>QAgent Proof — 暂时不可用</title>
+              <title>QAgent — 暂时不可用</title>
               <style>
                 body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #0b0f14; color: #e6edf3; font: 16px/1.7 ui-monospace, SFMono-Regular, Menlo, monospace; }
                 main { max-width: 38rem; padding: 2rem; }
@@ -78,7 +78,7 @@ jobs:
             </head>
             <body>
               <main>
-                <h1>QAgent Proof</h1>
+                <h1>QAgent</h1>
                 <p>页面暂时不可用，主站其他内容不受影响。</p>
                 <p><a href="/">返回 RopeHuo</a></p>
               </main>
