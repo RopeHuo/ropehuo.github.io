@@ -18,7 +18,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-14
     steps:
       - uses: actions/checkout@v4
 
@@ -30,6 +30,10 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.5
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -49,14 +53,14 @@ jobs:
           token: ${{ secrets.QAGENT_PROOF_TOKEN }}
           path: qagent-src
 
-      # 从 qagent 源码构建 curl 安装产物（失败只影响下载，不影响主站）
+      # 从 qagent 源码构建 macOS 安装产物（失败只影响下载，不影响主站）
       - name: Build qagent install bundle
         if: steps.qagent.outcome == 'success'
         continue-on-error: true
         working-directory: qagent-src
         run: |
           pnpm install --frozen-lockfile
-          pnpm build:bundle
+          pnpm build:install
 
       - name: Inject qagent page
         if: always()
@@ -97,11 +101,13 @@ jobs:
           fi
 
           # curl 安装产物：/qagent/install.sh + /qagent/download/*
-          if [ -d qagent-src/dist/install ] && [ -f qagent-src/install.sh ]; then
+          if [ -f qagent-src/dist/install/qagent-darwin-arm64 ] \
+            && [ -f qagent-src/dist/install/SHA256SUMS ] \
+            && [ -f qagent-src/install.sh ]; then
             mkdir -p dist/qagent/download
             cp -R qagent-src/dist/install/. dist/qagent/download/
             cp qagent-src/install.sh dist/qagent/install.sh
-            echo "qagent install bundle: $(node -p 'require("./dist/qagent/download/package.json").version')"
+            echo "qagent install bundle: $(node -p 'require("./qagent-src/package.json").version')"
           else
             echo "::warning::qagent install bundle unavailable; install.sh not published"
           fi
